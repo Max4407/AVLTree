@@ -28,10 +28,9 @@ add_executable(Main
         
 # These tests can use the Catch2-provided main
 add_executable(Tests
-        test/test.cpp # your test file
-        # add your own header files below - should be automatically added in CLion
-        # example (can also separate with newlines):
-        # src/AVL.h src/AVL.cpp
+        test/test.cpp 
+        src/node.h src/node.cpp
+        src/avl.h src/avl.cpp
         )
         
 target_link_libraries(Tests PRIVATE Catch2::Catch2WithMain) #link catch to test.cpp file

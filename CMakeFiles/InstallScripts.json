@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/maxaf/Documents/DSA/DSA-Project1-AVLTree/cmake_install.cmake",
+		"C:/Users/maxaf/Documents/DSA/DSA-Project1-AVLTree/_deps/catch2-build/cmake_install.cmake",
+		"C:/Users/maxaf/Documents/DSA/DSA-Project1-AVLTree/_deps/catch2-build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

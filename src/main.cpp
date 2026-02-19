@@ -1,8 +1,10 @@
 #include <iostream>
+#include "avl.h"
 
 using namespace std;
 
 int main(){
-	cout << "Hello AVL!\n";
+	//use regex to validate ids 
+	
 	return 0;
 }

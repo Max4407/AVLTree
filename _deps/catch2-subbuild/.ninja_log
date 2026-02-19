@@ -1,0 +1,21 @@
+# ninja log v6
+2	97	7926419558551953	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-mkdir	39b5718608178a9f
+2	97	7926419558551953	C:/Users/maxaf/Documents/DSA/DSA-Project1-AVLTree/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-mkdir	39b5718608178a9f
+98	12902	7926419686284944	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-download	e925c630dcbd1994
+98	12902	7926419686284944	C:/Users/maxaf/Documents/DSA/DSA-Project1-AVLTree/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-download	e925c630dcbd1994
+12903	13436	7926419686692435	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-update	3cf47e9ee5af9b7f
+12903	13436	7926419686692435	C:/Users/maxaf/Documents/DSA/DSA-Project1-AVLTree/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-update	3cf47e9ee5af9b7f
+13437	13636	7926419693780108	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-patch	877dec1b2bf45179
+13437	13636	7926419693780108	C:/Users/maxaf/Documents/DSA/DSA-Project1-AVLTree/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-patch	877dec1b2bf45179
+13636	13909	7926419696537143	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-configure	2f15e54dbe0d827
+13636	13909	7926419696537143	C:/Users/maxaf/Documents/DSA/DSA-Project1-AVLTree/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-configure	2f15e54dbe0d827
+13910	14188	7926419699291702	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-build	a4faa231f9c4c080
+13910	14188	7926419699291702	C:/Users/maxaf/Documents/DSA/DSA-Project1-AVLTree/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-build	a4faa231f9c4c080
+14188	14433	7926419701757464	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-install	766e23e173e99e05
+14188	14433	7926419701757464	C:/Users/maxaf/Documents/DSA/DSA-Project1-AVLTree/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-install	766e23e173e99e05
+14434	14725	7926419704764300	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-test	9776cc430d2f3149
+14434	14725	7926419704764300	C:/Users/maxaf/Documents/DSA/DSA-Project1-AVLTree/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-test	9776cc430d2f3149
+14725	14969	7926419707221404	CMakeFiles/catch2-populate-complete	74cb291ddc319731
+14725	14969	7926419707221404	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-done	74cb291ddc319731
+14725	14969	7926419707221404	C:/Users/maxaf/Documents/DSA/DSA-Project1-AVLTree/_deps/catch2-subbuild/CMakeFiles/catch2-populate-complete	74cb291ddc319731
+14725	14969	7926419707221404	C:/Users/maxaf/Documents/DSA/DSA-Project1-AVLTree/_deps/catch2-subbuild/catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-done	74cb291ddc319731
