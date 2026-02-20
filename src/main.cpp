@@ -9,6 +9,7 @@ int main(){
 
 	std::regex open = std::regex("^[\"]");
 	std::regex close = std::regex("[\"]$");
+	std::regex id = std::regex("^[0-9]*$");
 	
 	std::string line;
 	std::getline(std::cin,line);
@@ -46,9 +47,23 @@ int main(){
 
 			in >> arg;
 
-			std::regex name = std::regex("^[A-Za-z ]*$");
-    		std::regex id = std::regex("^[0-9]*$");
-			if (std::regex_search(arg,name)) {
+			if (std::regex_search(arg,open)) {
+				bool opened = true;
+				if (std::regex_search(arg,close))
+					opened = false;
+				else 
+					arg += " ";
+				while (opened) {
+					std::string temp;
+					in >> temp;
+					arg += temp;
+					if (std::regex_search(temp,close))
+						opened = false;
+					else 
+						arg += " ";
+				}
+				arg = arg.substr(1,arg.size() - 2);
+
 				std::vector<std::string> ids = tree.searchByName(arg);
 				if (ids.size() == 0) 
 					std::cout << "unsuccessful" << std::endl;
@@ -57,7 +72,7 @@ int main(){
 						std::cout << s << std::endl;
 				}
 			}
-			if (std::regex_search(arg,id)) {
+			else if (std::regex_search(arg,id)) {
 				std::cout << tree.searchByID(arg) << std::endl;
 			}
 		}
@@ -80,7 +95,7 @@ int main(){
 			std::cout << names[names.size()-1] << std::endl;
 		}
 		else if (command == "printLevelCount"){
-			std::cout << tree.levelCount();
+			std::cout << tree.levelCount() << std::endl;
 		}			
 		else if (command == "removeInorder") {
 			std::string n;
