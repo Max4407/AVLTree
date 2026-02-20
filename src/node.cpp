@@ -89,8 +89,6 @@ Node::~Node() {
     student = "";
     balance = 0;
 
-    delete left;
-    delete right;
     left = nullptr;
-    right = nullptr;
+    right = nullptr; //dont want to delete left and right because it will cause removing root to remove whole tree
 }

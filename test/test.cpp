@@ -190,7 +190,7 @@ TEST_CASE("parses input for invalid names/IDs", "[parsing input]") {
 	}		
 
 	SECTION("special characters in name") {
-		REQUIRE(!tester.insert("Ma$", "20000000"));
+		REQUIRE(!tester.insert("Max$", "20000000"));
 	}		
 
 	SECTION("letters in ID") {
@@ -202,7 +202,7 @@ TEST_CASE("parses input for invalid names/IDs", "[parsing input]") {
 	}		
 
 	SECTION("ID already present") {
-		//tester.insert("Max", "20000000");
+		tester.insert("Max", "20000000");
 		REQUIRE(!tester.insert("Max", "20000000"));
 	}		
 }
