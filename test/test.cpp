@@ -214,16 +214,93 @@ TEST_CASE("100 inputs, remove 10","[insertion/removal]",) {
 		tester.insert("Max",std::to_string(10000000 + i));
 	}
 
-	/*
 	while (tester.size > 90) {
 		srand(time(0));
 		int random = 10000000 + (rand() % 100) + 1;
 		tester.remove(std::to_string(random));
 	}
 
-	vector<std::string> result = tester.preOrderNames();
+	vector<std::string> result = tester.inOrderIDs();
 	for (int i = 1; i < 90; i++) {
 		REQUIRE(std::stoi(result[i]) > std::stoi(result[i-1]));
 	}
-	*/
+	
+}
+
+TEST_CASE("edge cases","[edge cases]") {
+	AVL tester;
+
+	SECTION("removing root") {
+		tester.insert("Max Fitz","10000000");
+		tester.insert("Max FitzGerald","20000000");
+		REQUIRE(tester.remove("10000000"));
+
+		vector<std::string> testNames = tester.preOrderNames();
+
+		REQUIRE(testNames.size() == 1); 
+		REQUIRE(testNames[0] == "Max FitzGerald"); 
+	}
+
+	SECTION("removing nonexistent node") {
+		tester.insert("Max Fitz","10000000");
+		tester.insert("Max FitzGerald","20000000");
+		REQUIRE(!tester.remove("00000000"));
+
+		vector<std::string> testNames = tester.preOrderNames();
+
+		REQUIRE(testNames.size() == 2); 
+		REQUIRE(testNames[0] == "Max Fitz"); 
+		REQUIRE(testNames[1] == "Max FitzGerald"); 
+	}
+
+	SECTION("search empty tree") {
+		REQUIRE(tester.searchByID("00000000") == "unsuccessful");
+	}
+}
+
+TEST_CASE("testing all three deletion cases","[removal]") {
+	AVL tester;
+
+	SECTION("no children") {
+		tester.insert("Max Fitz","10000000");
+		tester.insert("Max FitzGerald","20000000");
+		REQUIRE(tester.remove("20000000"));
+
+		vector<std::string> testNames = tester.preOrderNames();
+
+		REQUIRE(testNames.size() == 1); 
+		REQUIRE(testNames[0] == "Max Fitz"); 
+	}
+
+	SECTION("one child") {
+		tester.insert("Max Fitz","20000000");
+		tester.insert("Max FitzGerald","10000000");
+		tester.insert("Kevin", "30000000");
+		tester.insert("Raul","05000000");
+		REQUIRE(tester.remove("10000000"));
+
+		vector<std::string> testNames = tester.preOrderNames();
+
+		REQUIRE(testNames.size() == 3); 
+		REQUIRE(testNames[0] == "Max Fitz"); 
+		REQUIRE(testNames[1] == "Raul");
+		REQUIRE(testNames[2] == "Kevin");
+	}
+
+	SECTION("two children") {
+		tester.insert("Max Fitz","20000000");
+		tester.insert("Max FitzGerald","10000000");
+		tester.insert("Kevin", "30000000");
+		tester.insert("Raul","05000000");
+		tester.insert("Ryan","15000000");
+		REQUIRE(tester.remove("10000000"));
+
+		vector<std::string> testNames = tester.preOrderNames();
+
+		REQUIRE(testNames.size() == 4); 
+		REQUIRE(testNames[0] == "Max Fitz"); 
+		REQUIRE(testNames[1] == "Ryan");
+		REQUIRE(testNames[2] == "Raul");
+		REQUIRE(testNames[3] == "Kevin");
+	}
 }

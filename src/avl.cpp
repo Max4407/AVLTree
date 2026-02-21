@@ -44,15 +44,14 @@ bool AVL::insertHelper(Node* newNode, Node* node, Node* parent, bool left) {
     if (std::stoi(newNode -> idNum) > std::stoi(node -> idNum)) {
         if (node -> right == NULL) {
             node -> right = newNode;
-            (node -> balance)--;
             return true;
         }
         else {
             state = insertHelper(newNode, node -> right, node, false);
-            if (state && (--(node -> balance) <= -2)) {
-                if (node -> right -> balance == -1)
+            if (state && (balance(node) <= -2)) {
+                if (balance(node -> right) == -1)
                     node = rotateLeft(node);
-                if (node -> right -> balance == 1) {
+                if (balance(node -> right) == 1) {
                     node -> right = rotateRight(node -> right);
                     node = rotateLeft(node);
                 }
@@ -62,17 +61,16 @@ bool AVL::insertHelper(Node* newNode, Node* node, Node* parent, bool left) {
     else if (std::stoi(newNode -> idNum) < std::stoi(node -> idNum)) {
         if (node -> left == NULL) {
             node -> left = newNode;
-            (node -> balance)++;
             return true;
         }
         else {
             state = insertHelper(newNode, node -> left, node, true);
-            if (state && (++(node -> balance) >= 2)) {
-                if (node -> left -> balance == -1) {
+            if (state && (balance(node) >= 2)) {
+                if (balance(node -> left) == -1) {
                     node -> left = rotateLeft(node -> left);
                     node = rotateRight(node);
                 }
-                if (node -> left -> balance == 1) 
+                if (balance(node -> left) == 1) 
                     node = rotateRight(node);
             }
         }
@@ -99,17 +97,12 @@ bool AVL::remove(std::string id, Node* node, Node* parent, bool left) {
     if (std::stoi(id) < std::stoi(node -> idNum)) {
         if (node -> left == NULL) 
             return false;
-        bool state = remove(id,node -> left, node, true); 
-        if (state)
-            (node -> balance)--;
-        return state;
+        return remove(id,node -> left, node, true); 
+
     } else if (std::stoi(id) > std::stoi(node -> idNum)) {
         if (node -> right == NULL)
             return false;
-        bool state = remove(id,node -> right, node, false); 
-        if (state)
-            (node -> balance)++;
-        return state;
+        return remove(id,node -> right, node, false); 
     } else {
         if (node -> left == NULL && node -> right == NULL) {
             if (parent == NULL) {
@@ -197,7 +190,6 @@ bool AVL::remove(std::string id, Node* node, Node* parent, bool left) {
                 else 
                     successor_parent -> left = NULL;
             }
-            (node -> balance)++;
             size--;
             return true;
         }
@@ -324,6 +316,24 @@ std::vector<std::string> AVL::postOrderNames(Node* node) {
     return names;
 }
 
+std::vector<std::string> AVL::inOrderIDs(Node* node) {
+    if (node == NULL)
+        node = root;
+    if (node == NULL)
+        return std::vector<std::string> {};
+    std::vector<std::string> ids;
+    if (node -> left != NULL) {
+        std::vector<std::string> temp = inOrderIDs(node -> left);
+        ids.insert(ids.end(),temp.begin(),temp.end());
+    }
+    ids.push_back(node -> idNum);
+    if (node -> right != NULL) {
+        std::vector<std::string> temp = inOrderIDs(node -> right);
+        ids.insert(ids.end(),temp.begin(),temp.end());
+    }
+    return ids;
+}
+
 int AVL::levelCount() {
     if (root == NULL)
         return 0;
@@ -345,4 +355,8 @@ AVL::~AVL() {
     size = 0;
     delete root;
     root = nullptr;
+}
+
+int AVL::balance(Node* node) {
+    return height(node->left) - height(node->right);
 }

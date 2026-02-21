@@ -6,8 +6,6 @@ struct Node {
     std::string student;
     std::string idNum;
 
-    int balance;
-
     Node* left;
     Node* right;
 

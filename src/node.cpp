@@ -6,8 +6,6 @@ Node::Node() {
 
     left = NULL;
     right = NULL;
-
-    balance = 0;
 }
 
 Node::Node(std::string name, std::string id) {
@@ -16,14 +14,11 @@ Node::Node(std::string name, std::string id) {
 
     left = NULL;
     right = NULL;   
-
-    balance = 0;
 }
 
 Node::Node(Node& other) {
     idNum = other.idNum;
     student = other.student;
-    balance = other.balance;
 
     if (other.left != NULL)
         left = new Node(*other.left);
@@ -38,7 +33,6 @@ Node::Node(Node& other) {
 Node::Node(Node&& other) {
     idNum = other.idNum;
     student = other.student;
-    balance = other.balance;
 
     if (other.left != NULL)
         left = new Node(*other.left);
@@ -53,7 +47,6 @@ Node::Node(Node&& other) {
 Node& Node::operator=(Node& other) {
     this -> idNum = other.idNum;
     this -> student = other.student;
-    this -> balance = other.balance;
 
     if (other.left != NULL)
         this -> left = new Node(*other.left);
@@ -70,7 +63,6 @@ Node& Node::operator=(Node& other) {
 Node& Node::operator=(Node&& other) {
     this -> idNum = other.idNum;
     this -> student = other.student;
-    this -> balance = other.balance;
 
     if (other.left != NULL)
         this -> left = new Node(*other.left);
@@ -87,7 +79,6 @@ Node& Node::operator=(Node&& other) {
 Node::~Node() {
     idNum = "";
     student = "";
-    balance = 0;
 
     left = nullptr;
     right = nullptr; //dont want to delete left and right because it will cause removing root to remove whole tree

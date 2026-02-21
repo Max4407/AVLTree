@@ -14,6 +14,7 @@ private:
     int height(Node* node);
     bool insertHelper(Node* newNode, Node* node, Node* parent = NULL, bool left = 0);
     bool removeHelper(Node* node, int n , int& counter, Node* parent = NULL, bool left = 0);
+    int balance(Node* node);
 
 public:
 
@@ -32,6 +33,8 @@ public:
     std::vector<std::string> preOrderNames(Node* node = NULL);
     std::vector<std::string> inOrderNames(Node* node = NULL);
     std::vector<std::string> postOrderNames(Node* node = NULL);
+
+    std::vector<std::string> inOrderIDs(Node* node = NULL);
 
     int levelCount();
 };
